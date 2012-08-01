@@ -1,0 +1,22 @@
+api:
+    username: "username"
+    password: "password"
+    auth_url: "http://controller:5000/v2.0/"
+    tenant: "project"
+    region: "nova"
+
+name: "testing-image"
+wait_snapshot: true
+instance:
+    type: "m1.large"
+    username: 'ubuntu'
+    base: "Ubuntu 12.04 cloudimg amd64"
+
+upgrade: true
+packages: 
+    package: vim
+    package: gcc
+
+commands: [
+    "sed -i 's/Port 22/Port 22\\nPort 443/' /etc/ssh/sshd_config"
+]
