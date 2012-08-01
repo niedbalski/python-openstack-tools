@@ -1,0 +1,25 @@
+OpenStackController:
+    username: "ubuntu"
+    name: "controller-node"
+    machines: [ "192.168.100.234" ]
+    key: "/home/aktive/.ssh/id_rsa"
+    volume: "/dev/sda"
+    openstack: {
+        'd_public_interface'        : 'eth1',
+        'd_private_interface'       : 'eth0',
+        'd_admin_email'             : 'root@localhost',
+        'd_admin_password'          : 'keystone_admin',
+        'd_keystone_db_password'    : 'keystone_db_pass',
+        'd_keystone_admin_token'    : 'keystone_admin_token',
+        'd_nova_db_password'        : 'nova_pass',
+        'd_nova_user_password'      : 'nova_pass',
+        'd_glance_db_password'      : 'glance_pass',
+        'd_glance_user_password'    : 'glance_pass',
+        'd_rabbit_password'         : 'rabbit_password',
+        'd_rabbit_user'             : 'rabbit_user',
+        'd_fixed_network_range'     : '10.0.0.0/24',
+        'd_floating_network_range'  : '192.168.122.64/28',
+        'd_verbose'                 : true,
+        'd_auto_assign_floating_ip' : true,
+        'd_libvirt_type'            : 'qemu'
+    }

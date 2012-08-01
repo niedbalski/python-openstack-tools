@@ -1,0 +1,14 @@
+#Just compute machines installation
+
+OpenStackCompute: 
+    username: "ubuntu"
+    key: "/home/aktive/.ssh/id_rsa"
+    controller: {
+        'address': "192.168.100.10",
+        'name': "controller-node"
+    }
+    volume: '/dev/sda'
+    #list of compute machines
+    machines: [
+        "192.168.100.15"
+    ]

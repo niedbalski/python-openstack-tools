@@ -1,0 +1,67 @@
+environment:
+
+    name: "testing" #vms prefix
+    path: "/home/aktive/vms" #path to vm storage
+    iso: "/home/aktive/Downloads/ubuntu-12.04-server-amd64.iso" #iso to boot
+    preseed: "./config/ubuntu-server.preseed" #preseed file ( debconf )
+    console: "console=tty0 console=ttyS0,115200n8" #console mode
+    
+    #compute node machines
+    compute:
+        nodes: 2
+        memory: 2048
+        vcpu: 2
+
+    #controller node
+    controller:
+        address: "192.168.100.2"
+        memory: 2048
+        vcpu: 1
+    
+    #environment networking
+    network:
+        bridge: true
+        interfaces: {
+            'public': {
+                'interface' : 'virbr0',
+                'network' : {
+                    'ip_address': "192.168.122.1",
+                    'netmask': "255.255.255.0",
+                    'dhcp': {
+                        'start': "192.168.122.2",
+                        'end': "192.168.122.254"
+                    }
+                }
+            },
+
+            'internal': {
+                'interface': 'virbr2',
+                'network' : {
+                    'ip_address': "192.168.100.1",
+                    'netmask': "255.255.255.0",
+                    'dhcp' : {
+                        'start': "192.168.100.3",
+                        'end': "192.168.100.254"
+                    }
+                }
+            }
+        }
+
+    #disk setup for all the machines
+    disk:
+        attach: true
+        volumes: {
+            'primary': {
+                'size': "25" #expressed on GB
+            },
+
+            'secondary': {
+                'size': "50", #expressed on GB
+                'label': 'nova-volumes'
+            }
+
+        }
+
+    #key creation for machine loading
+    key:
+        auto_assign: true 
