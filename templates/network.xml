@@ -1,0 +1,10 @@
+<network>
+  <name>$network_name</name>
+  <bridge name="$interface" />
+  <forward/>
+  <ip address="$network_ip_address" netmask="$network_netmask">
+    <dhcp>
+      <range start="$network_dhcp_start" end="$network_dhcp_end" />
+    </dhcp>
+  </ip>
+</network>
